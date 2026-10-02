@@ -1,24 +1,28 @@
 [project]
-name = "dl-sesi6"
+name = "catsdogs-cnn"
 version = "0.1.0"
-description = "Add your description here"
+description = "Microsoft Cats vs Dogs - CNN binary classification (reproducible, test-set isolated)"
 readme = "README.md"
-authors = [
-    { name = "arielsharonferdinandus", email = "ariel.ferdinandus@cakrawala.ac.id" }
-]
-requires-python = ">=3.12"
+requires-python = ">=3.10"
 dependencies = [
     "kagglehub>=0.3.6",
-    "matplotlib>=3.7",
     "numpy>=1.24",
     "pillow>=10.0",
+    "matplotlib>=3.7",
     "torch>=2.1",
     "torchvision>=0.16",
 ]
 
-[project.scripts]
-dl-sesi6 = "dl_sesi6:main"
+[tool.uv]
+package = false   # proyek berupa script, bukan library yang di-install
 
-[build-system]
-requires = ["uv_build>=0.12.18,<0.13.0"]
-build-backend = "uv_build"
+# --- Opsional: PyTorch CPU-only (jauh lebih kecil daripada build CUDA bawaan PyPI di Linux) ---
+# Hapus tanda '#' pada blok berikut jika tidak memakai GPU, lalu jalankan `uv sync` ulang.
+# [[tool.uv.index]]
+# name = "pytorch-cpu"
+# url = "https://download.pytorch.org/whl/cpu"
+# explicit = true
+#
+# [tool.uv.sources]
+# torch = { index = "pytorch-cpu" }
+# torchvision = { index = "pytorch-cpu" }
