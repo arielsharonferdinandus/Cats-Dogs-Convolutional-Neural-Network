@@ -31,6 +31,7 @@ import csv
 import hashlib
 import json
 import sys
+import warnings
 from pathlib import Path
 
 import numpy as np
@@ -43,6 +44,12 @@ from config import (CLASS_TO_IDX, DEFAULT_MODEL, IDX_TO_CLASS, NORM_STATS_PATH,
                     RESULTS_DIR, SPLIT_DIR, SPLIT_MANIFEST)
 
 VALID_SPLITS = ("train", "val", "test")
+
+# Beberapa JPEG di dataset ini punya metadata EXIF/TIFF terpotong. PIL tetap bisa men-decode pikselnya
+# (sudah dicatat di inspect_dataset.py: 'files_with_decoder_warnings'), tetapi mencetak UserWarning
+# berulang di setiap epoch. Hanya dua pesan yang sudah dikenal ini yang disaring; error lain tetap muncul.
+warnings.filterwarnings("ignore", message=".*Truncated File Read.*", category=UserWarning)
+warnings.filterwarnings("ignore", message=".*Corrupt EXIF data.*", category=UserWarning)
 
 
 # --------------------------------------------------------------------------- #
@@ -132,13 +139,15 @@ class CatsDogsDataset(Dataset):
 
 
 def make_loader(split: str, batch_size: int, train: bool, num_workers: int = 2,
-                augment: bool = True, allow_test: bool = False, seed: int | None = None) -> DataLoader:
+                augment: bool = True, allow_test: bool = False, seed: int | None = None,
+                shuffle: bool | None = None) -> DataLoader:
+    """shuffle=None -> mengikuti `train` (train diacak, val/test berurutan)."""
     ds = CatsDogsDataset(split, build_transform(train=train, augment=augment), allow_test=allow_test)
     g = None
     if seed is not None:
         g = torch.Generator()
         g.manual_seed(seed)
-    return DataLoader(ds, batch_size=batch_size, shuffle=train, num_workers=num_workers,
+    return DataLoader(ds, batch_size=batch_size, shuffle=train if shuffle is None else shuffle, num_workers=num_workers,
                       pin_memory=torch.cuda.is_available(), generator=g, drop_last=False)
 
 
@@ -189,14 +198,16 @@ def save_sample_grid(out_path: Path, mean, std, n: int = 8) -> None:
     ds_tr = CatsDogsDataset("train", build_transform(train=True, mean=mean, std=std))
     ds_va = CatsDogsDataset("val", build_transform(train=False, mean=mean, std=std))
     rng = np.random.default_rng(0)
-    idx = rng.choice(len(ds_tr), size=n, replace=False)
+    # indeks DIAMBIL TERPISAH dari ukuran masing-masing dataset (val jauh lebih kecil dari train)
+    idx_by_row = {0: rng.choice(len(ds_tr), size=n, replace=False),
+                  1: rng.choice(len(ds_va), size=n, replace=False)}
     m = torch.tensor(mean).view(3, 1, 1)
     sd = torch.tensor(std).view(3, 1, 1)
 
     fig, axes = plt.subplots(2, n, figsize=(2 * n, 4.4))
-    for j, i in enumerate(idx):
+    for j in range(n):
         for row, ds, name in ((0, ds_tr, "train (augmentasi)"), (1, ds_va, "val (tanpa augmentasi)")):
-            x, y = ds[int(i)]
+            x, y = ds[int(idx_by_row[row][j])]
             img = (x * sd + m).clamp(0, 1).permute(1, 2, 0).numpy()  # denormalisasi untuk tampilan
             axes[row, j].imshow(img)
             axes[row, j].set_title(f"{IDX_TO_CLASS[int(y.item())]} ({int(y.item())})", fontsize=9)
@@ -249,7 +260,7 @@ def main() -> None:
 
     # cek sanity satu batch dari train & val (test TIDAK disentuh)
     for split, train in (("train", True), ("val", False)):
-        loader = make_loader(split, batch_size=16, train=train, num_workers=0, seed=0)
+        loader = make_loader(split, batch_size=16, train=train, num_workers=0, seed=0, shuffle=True)
         x, y = next(iter(loader))
         sanity_check_batch(x, y, size=args.size)
         print(f"[OK] Batch {split}: x{tuple(x.shape)} {x.dtype}, y{tuple(y.shape)} {y.dtype}, "

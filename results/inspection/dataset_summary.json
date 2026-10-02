@@ -1,0 +1,222 @@
+{
+  "dataset_source": "https://www.kaggle.com/datasets/shaunthesheep/microsoft-catsvsdogs-dataset (versi 1, fingerprint a1edd2d9d4b8...)",
+  "inspected_at_utc": "2026-10-02T01:04:23+00:00",
+  "structure": {
+    "root": "/home/joker/kuliah/s5/Deep2/DL_Sesi6/data/raw/PetImages",
+    "subfolders_file_counts": {
+      "Cat": 12501,
+      "Dog": 12501
+    },
+    "files_at_root": []
+  },
+  "total_files_all": 25002,
+  "total_valid": 24998,
+  "total_corrupt": 2,
+  "total_non_image": 2,
+  "per_class": {
+    "Cat": {
+      "total_files": 12501,
+      "valid": 12499,
+      "corrupt": 1,
+      "non_image": 1,
+      "extensions": {
+        ".jpg": 12500,
+        ".db": 1
+      },
+      "formats": {
+        "JPEG": 12405,
+        "BMP": 71,
+        "GIF": 22,
+        "PSD": 1
+      },
+      "modes": {
+        "RGB (3ch)": 12470,
+        "P (1ch)": 26,
+        "L (1ch)": 3
+      },
+      "size_stats": {
+        "n": 12499,
+        "width": {
+          "min": 4.0,
+          "max": 500.0,
+          "mean": 410.84,
+          "median": 470.0,
+          "std": 107.91,
+          "p5": 197.9000000000001,
+          "p95": 500.0
+        },
+        "height": {
+          "min": 4.0,
+          "max": 500.0,
+          "mean": 356.94,
+          "median": 375.0,
+          "std": 96.52,
+          "p5": 180.0,
+          "p95": 500.0
+        },
+        "aspect_ratio_w_over_h": {
+          "min": 0.3546099290780142,
+          "max": 3.717948717948718,
+          "mean": 1.19,
+          "median": 1.3333333333333333,
+          "std": 0.29,
+          "p5": 0.69,
+          "p95": 1.5527950310559007
+        },
+        "tiny_images_lt_32px": 1
+      }
+    },
+    "Dog": {
+      "total_files": 12501,
+      "valid": 12499,
+      "corrupt": 1,
+      "non_image": 1,
+      "extensions": {
+        ".jpg": 12500,
+        ".db": 1
+      },
+      "formats": {
+        "JPEG": 12364,
+        "GIF": 29,
+        "BMP": 102,
+        "PNG": 4
+      },
+      "modes": {
+        "RGB (3ch)": 12461,
+        "P (1ch)": 31,
+        "RGBA (4ch)": 2,
+        "L (1ch)": 2,
+        "CMYK (4ch)": 3
+      },
+      "size_stats": {
+        "n": 12499,
+        "width": {
+          "min": 42.0,
+          "max": 500.0,
+          "mean": 398.06,
+          "median": 423.0,
+          "std": 109.7,
+          "p5": 186.0,
+          "p95": 500.0
+        },
+        "height": {
+          "min": 33.0,
+          "max": 500.0,
+          "mean": 365.04,
+          "median": 375.0,
+          "std": 97.31,
+          "p5": 187.0,
+          "p95": 500.0
+        },
+        "aspect_ratio_w_over_h": {
+          "min": 0.306,
+          "max": 5.9393939393939394,
+          "mean": 1.12,
+          "median": 1.1904761904761905,
+          "std": 0.29,
+          "p5": 0.666,
+          "p95": 1.5015015015015014
+        },
+        "tiny_images_lt_32px": 0
+      }
+    }
+  },
+  "class_ratio_cat_to_dog": "1.0000 : 1",
+  "size_stats_all": {
+    "n": 24998,
+    "width": {
+      "min": 4.0,
+      "max": 500.0,
+      "mean": 404.45,
+      "median": 448.0,
+      "std": 109.0,
+      "p5": 192.0,
+      "p95": 500.0
+    },
+    "height": {
+      "min": 4.0,
+      "max": 500.0,
+      "mean": 360.99,
+      "median": 375.0,
+      "std": 97.0,
+      "p5": 181.0,
+      "p95": 500.0
+    },
+    "aspect_ratio_w_over_h": {
+      "min": 0.306,
+      "max": 5.9393939393939394,
+      "mean": 1.16,
+      "median": 1.2690355329949239,
+      "std": 0.29,
+      "p5": 0.668,
+      "p95": 1.5060240963855422
+    },
+    "tiny_images_lt_32px": 1
+  },
+  "channel_counts": {
+    "3": 24931,
+    "1": 62,
+    "4": 5
+  },
+  "ext_format_mismatch_count": 229,
+  "files_with_decoder_warnings": 1,
+  "tiny_images": 1,
+  "duplicate_groups": 28,
+  "duplicate_files": 58,
+  "duplicate_group_examples": [
+    [
+      "Cat/10052.jpg",
+      "Cat/1930.jpg"
+    ],
+    [
+      "Cat/10273.jpg",
+      "Cat/1639.jpg"
+    ],
+    [
+      "Cat/10360.jpg",
+      "Cat/3345.jpg"
+    ],
+    [
+      "Cat/11053.jpg",
+      "Cat/4667.jpg"
+    ],
+    [
+      "Cat/11197.jpg",
+      "Cat/3910.jpg"
+    ],
+    [
+      "Cat/11565.jpg",
+      "Dog/10401.jpg",
+      "Dog/10797.jpg",
+      "Dog/2877.jpg"
+    ],
+    [
+      "Cat/11595.jpg",
+      "Cat/8137.jpg"
+    ],
+    [
+      "Cat/11706.jpg",
+      "Cat/11974.jpg"
+    ],
+    [
+      "Cat/12408.jpg",
+      "Cat/2339.jpg"
+    ],
+    [
+      "Cat/2580.jpg",
+      "Cat/4726.jpg"
+    ]
+  ],
+  "corrupt_examples": [
+    {
+      "path": "/home/joker/kuliah/s5/Deep2/DL_Sesi6/data/raw/PetImages/Cat/666.jpg",
+      "label": "Cat",
+      "reason": "file kosong (0 byte)"
+    },
+    {
+      "path": "/home/joker/kuliah/s5/Deep2/DL_Sesi6/data/raw/PetImages/Dog/11702.jpg",
+      "label": "Dog",
+      "reason": "file kosong (0 byte)"
+    }
+  ]
+}

@@ -1,0 +1,49 @@
+{
+  "created_at_utc": "2026-10-02T01:04:26+00:00",
+  "random_seed": 42,
+  "method": "stratified per kelas + group-aware (MD5 duplikat tidak dipisah), numpy.random.default_rng(seed)",
+  "ratios_target": {
+    "train": 0.7,
+    "val": 0.15,
+    "test": 0.15
+  },
+  "source_valid_csv": "results/inspection/valid_files.csv",
+  "source_valid_csv_sha256": "f8be3be54454222b9cee52536c1aaccefea4a50b1ff2cf7f05a46ab8432364fe",
+  "n_input_valid": 24998,
+  "n_excluded_label_conflict": 6,
+  "n_duplicate_groups_kept_together": 26,
+  "counts": {
+    "train": {
+      "Cat": 8747,
+      "Dog": 8746,
+      "total": 17493
+    },
+    "val": {
+      "Cat": 1875,
+      "Dog": 1875,
+      "total": 3750
+    },
+    "test": {
+      "Cat": 1875,
+      "Dog": 1874,
+      "total": 3749
+    }
+  },
+  "integrity_checks": {
+    "train_vs_val_path_overlap": 0,
+    "train_vs_val_md5_overlap": 0,
+    "train_vs_test_path_overlap": 0,
+    "train_vs_test_md5_overlap": 0,
+    "val_vs_test_path_overlap": 0,
+    "val_vs_test_md5_overlap": 0,
+    "train_ratio_actual": 0.6999,
+    "val_ratio_actual": 0.15,
+    "test_ratio_actual": 0.15
+  },
+  "split_csv_sha256": {
+    "train": "43a85d85c4aad2c66400ba52f31ae57ac238b523248ff7640b95715bede16386",
+    "val": "1c5aabe8e0591b03e08a81be04203c4b602908dd646b544a2fef17e725a95c6c",
+    "test": "8bfaba605a046ffa9b88f4bee5911a8fab63e3ca072cd372765030861a7d3945"
+  },
+  "test_set_policy": "test.csv hanya dibaca oleh evaluate.py / error_analysis.py setelah konfigurasi final dikunci."
+}

@@ -1,0 +1,19 @@
+{
+  "mean": [
+    0.488141,
+    0.454966,
+    0.416358
+  ],
+  "std": [
+    0.257589,
+    0.250695,
+    0.253535
+  ],
+  "computed_from": "train.csv saja",
+  "n_images": 17493,
+  "image_size": 128,
+  "pixel_range_before_standardize": [
+    0.0,
+    1.0
+  ]
+}
