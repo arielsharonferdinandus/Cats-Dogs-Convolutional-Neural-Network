@@ -10,7 +10,6 @@ final dikunci, lalu test set dievaluasi **sekali**.
 Microsoft Cats vs Dogs (Kaggle): https://www.kaggle.com/datasets/shaunthesheep/microsoft-catsvsdogs-dataset
 Diunduh lewat library `kagglehub`.
 <!-- DATASET_INFO:START -->
-> Blok ini dibuat otomatis oleh `uv run main.py readme` dari manifest di `data/` dan `results/`; jangan diedit manual.
 
 | Item | Nilai |
 |---|---|
