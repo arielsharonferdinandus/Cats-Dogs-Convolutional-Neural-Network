@@ -1,2 +1,3 @@
 data/raw/
 data/kagglehub_cache/
+src/update_readme.py

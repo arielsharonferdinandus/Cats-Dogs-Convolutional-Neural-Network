@@ -8,7 +8,30 @@ final dikunci, lalu test set dievaluasi **sekali**.
 
 ## Dataset
 Microsoft Cats vs Dogs (Kaggle): https://www.kaggle.com/datasets/shaunthesheep/microsoft-catsvsdogs-dataset
-Diunduh lewat library `kagglehub` (butuh akun & token Kaggle).
+Diunduh lewat library `kagglehub`.
+<!-- DATASET_INFO:START -->
+> Blok ini dibuat otomatis oleh `uv run main.py readme` dari manifest di `data/` dan `results/`; jangan diedit manual.
+
+| Item | Nilai |
+|---|---|
+| URL dataset | https://www.kaggle.com/datasets/shaunthesheep/microsoft-catsvsdogs-dataset |
+| Tanggal pengunduhan | **2026-10-02** (pukul 01:03:52 UTC) |
+| Metode unduh | `kagglehub 1.0.2` |
+| Versi dataset Kaggle | 1 |
+| Fingerprint daftar file (SHA-256) | `a1edd2d9d4b8552324b268f0e8651a88d45218d99f25717a388e63a345fae3df` |
+| File mentah (Cat / Dog / total) | 12501 / 12501 / 25002 |
+| Hasil inspeksi (valid / korup / non-gambar) | 24998 / 2 / 2 |
+| Seed pembagian data | **42** |
+| Rasio target (train / val / test) | 70% / 15% / 15% |
+| Dikeluarkan saat split (label konflik pada duplikat) | 6 |
+| Kelompok duplikat yang dijaga satu split | 26 |
+| Jumlah train | 17493 (69.99%); Cat 8747, Dog 8746 |
+| Jumlah val | 3750 (15.00%); Cat 1875, Dog 1875 |
+| Jumlah test | 3749 (15.00%); Cat 1875, Dog 1874 |
+| SHA-256 train.csv | `43a85d85c4aad2c66400ba52f31ae57ac238b523248ff7640b95715bede16386` |
+| SHA-256 val.csv | `1c5aabe8e0591b03e08a81be04203c4b602908dd646b544a2fef17e725a95c6c` |
+| SHA-256 test.csv | `8bfaba605a046ffa9b88f4bee5911a8fab63e3ca072cd372765030861a7d3945` |
+<!-- DATASET_INFO:END -->
 
 ## Environment
 - Python **3.10+** (kode memakai type hint modern; dikembangkan untuk Python 3.12)
